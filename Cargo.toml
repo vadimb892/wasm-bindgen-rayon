@@ -11,8 +11,12 @@ readme = "README.md"
 exclude = [".github"]
 repository = "https://github.com/RReverser/wasm-bindgen-rayon"
 
-[dependencies]
+[workspace.dependencies]
 wasm-bindgen = "0.2.84"
+rayon = "1.8"
+
+[dependencies]
+wasm-bindgen = { workspace = true }
 rayon-core = "1.12"
 spmc = "0.3.0"
 js-sys = "0.3.48"
@@ -28,3 +32,7 @@ no-bundler = []
 features = ["nightly"]
 targets = ["wasm32-unknown-unknown"]
 rustc-args = ["-C", "target-feature=+atomics,+bulk-memory"]
+
+[patch.crates-io]
+rayon = { git = "https://github.com/RReverser/rayon", branch = "wasm-sync" }
+rayon-core = { git = "https://github.com/RReverser/rayon", branch = "wasm-sync" }
