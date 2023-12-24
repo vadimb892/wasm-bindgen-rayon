@@ -18,7 +18,7 @@ rayon = "1.8"
 [dependencies]
 wasm-bindgen = { workspace = true }
 rayon-core = "1.12"
-spmc = "0.3.0"
+crossbeam-channel = "0.5.9"
 js-sys = "0.3.48"
 
 [workspace]
