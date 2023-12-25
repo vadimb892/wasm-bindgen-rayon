@@ -31,13 +31,9 @@ For a quick demo, check out <https://rreverser.com/wasm-bindgen-rayon-demo/>.
 
 Before we get started, check out caveats listed in the [wasm-bindgen threading docs](https://rustwasm.github.io/wasm-bindgen/examples/raytrace.html). While this library specifically targets Rayon and automatically provides the necessary shims for you, some of the caveats still apply.
 
-Most notably, even when you're using multithreading, the main thread still **can't be blocked** while waiting for the Rayon pool to get ready or for all the background operations to finish.
-
-You must instantiate the main JS+Wasm in a dedicated `Worker` to avoid blocking the main thread - that is, don't mix UI and Rayon code together. Instead, use a library like [Comlink](https://github.com/GoogleChromeLabs/comlink) or a custom glue code to expose required wasm-bindgen methods to the main thread, and do the UI work from there.
-
 ## Setting up
 
-First of all, in order to use `SharedArrayBuffer` on the Web, you need to enable [cross-origin isolation policies](https://web.dev/coop-coep/). Check out the linked article for details.
+In order to use `SharedArrayBuffer` on the Web, you need to enable [cross-origin isolation policies](https://web.dev/coop-coep/). Check out the linked article for details.
 
 Then, add this crate as a dependency to your `Cargo.toml` (in addition to `wasm-bindgen` and `rayon` themselves):
 
